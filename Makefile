@@ -31,6 +31,10 @@ down:
 		docker ps -aq \
 			--filter="name=${name}-dev" )
 
+logs:
+	docker container logs -f \
+		${name}-dev
+
 bash: shell
 shell:
 	docker exec -it --user application ${name}-dev /bin/bash
