@@ -23,7 +23,7 @@ up: build
 		--name ${name}-dev \
 		--env-file .config --env-file .env \
 		-p 8000:80 -p 8443:443 -p 10022:22 \
-		-v ${PWD}/app:/app -v ${PWD}/data:/var/alexandria \
+		-v ${PWD}/app:/app -v ${PWD}/data:/data \
 		-t ${name}:latest
 
 down:
@@ -38,6 +38,8 @@ logs:
 bash: shell
 shell:
 	docker exec -it --user application ${name}-dev /bin/bash
+root:
+	docker exec -it --user root ${name}-dev /bin/bash
 
 #############################
 # Argument fix workaround

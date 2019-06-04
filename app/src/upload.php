@@ -1,5 +1,16 @@
 <?php
 
+use Monolog\Logger;
+use Monolog\Handler\SyslogHandler;
+
+// create a log channel
+$log = new Logger('default');
+$log->pushHandler(new SyslogHandler());
+
+// add records to the log
+$log->warning('Foo');
+$log->error('Bar');
+
 $target_dir = getenv('STORAGE_ROOT') . 'uploads';
 if(!is_dir($target_dir)) {
   mkdir($target_dir, 0777, true);
