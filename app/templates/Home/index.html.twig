@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+  <h1>Welcome to {{ application_name }}!</h1>
+
+  Books:
+  <ul>
+  {% for book in books %}
+    <li> {{ book }} </li>
+  {% endfor %}
+  </ul>
+
+{% endblock %}

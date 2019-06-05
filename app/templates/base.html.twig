@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ title }}</title>
+
+  </head>
+  <body>
+
+    <header>
+      <div>
+        <ul>
+          <li><a href="/">HOME</a></li>
+        </ul>
+      </div>
+      <hr />
+      <div>
+        <h3>{{ header }}</h3>
+      </div>
+    <header>
+
+    <hr />
+
+    <main>
+      {% block main %}{% endblock %}
+    </main>
+
+    <hr />
+
+    <footer>
+      <h3>© All rights reserved. {{ application_name }}</h3>
+    </footer>
+
+  </body>
+</html>

@@ -23,7 +23,6 @@ class Home extends AbstractController
         'books' => $this->dirToArray(getenv('STORAGE_ROOT') . self::BOOKS_DIR)
       ]
     );
-
   }
 
   private function dirToArray (string $dir) : array

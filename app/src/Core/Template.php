@@ -2,17 +2,24 @@
 
 namespace Core;
 
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+
 use Exception;
 
 class Template
 {
-  private $viewPath = '%s/src/View';
-  private $baseView = 'base.html';
-  private $reservedVariables = ['application_name', 'body'];
+  const RESERVED_VARIABLES = ['application_name', 'body'];
+
+  private $viewPath;
+  private $twig;
 
   public function __construct()
   {
-    $this->viewPath = sprintf($this->viewPath, getenv(APP_ROOT));
+    $this->viewPath = getenv('APP_ROOT') . 'templates';
+
+    $loader = new FilesystemLoader($this->viewPath);
+    $this->twig = new Environment($loader);
   }
 
   public function getView($controller, array $variables = [])
@@ -23,27 +30,20 @@ class Template
     $directory = $this->getDirectory($parts[0]);
     $file = $this->getFile($parts[1]);
 
-    $viewPath = $this->viewPath.'/'.$directory.'/'.$file.'.html';
-    if (file_exists($viewPath)) {
-      $baseView = file_get_contents($this->viewPath.'/'.$this->baseView);
-      $body = file_get_contents($viewPath);
-      $view = str_replace('{{ body }}', $body, $baseView);
-
-      foreach ($variables as $key => $value) {
-        $view = str_replace('{{ '.$key.' }}', $value, $view);
-      }
-
-      return $view;
+    $path = $directory.'/'.$file.'.html.twig';
+    try {
+      return ($this->twig)->render($path, $variables);
     }
-
-    http_response_code(404);
-    throw new Exception(sprintf('View cannot be found: [%s]', $viewPath), 404);
+    catch (Exception $e) {
+      http_response_code(404);
+      throw new Exception(sprintf('View cannot be found: [%s]', $path), 404);
+    }
   }
 
   private function validateVariables(array $variables = [])
   {
     foreach ($variables as $name => $value) {
-      if (in_array($name, $this->reservedVariables)) {
+      if (in_array($name, self::RESERVED_VARIABLES)) {
         http_response_code(404);
         throw new Exception("Unacceptable view variable given: $name", 409);
       }
