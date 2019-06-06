@@ -4,6 +4,14 @@
 
   <h1>Welcome to {{ application_name }}!</h1>
 
+  <form action="/book/upload" method="post" enctype="multipart/form-data">
+    Select book to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload File" name="submit">
+  </form>
+
+  <hr>
+
   Books:
   <ul>
   {% for book in books %}

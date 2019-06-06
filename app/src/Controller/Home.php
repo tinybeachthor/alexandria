@@ -3,24 +3,25 @@
 namespace Controller;
 
 use Core\Template;
+use Core\Request;
+
+use Controller\Book;
 
 class Home extends AbstractController
 {
-  const BOOKS_DIR = 'books';
-
   public function __construct()
   {
-    parent::__construct(new Template());
+    parent::__construct();
   }
 
-  public function indexMethod()
+  public function indexMethod(Request $request)
   {
     return parent::getView(
       __METHOD__,
       [
         'title' => APP_NAME.' - Home',
         'header' => 'Welcome to '.APP_NAME,
-        'books' => $this->dirToArray(getenv('STORAGE_ROOT') . self::BOOKS_DIR)
+        'books' => $this->dirToArray(getenv('STORAGE_ROOT') . Book::BOOKS_DIR)
       ]
     );
   }
@@ -28,6 +29,10 @@ class Home extends AbstractController
   private function dirToArray (string $dir) : array
   {
     $result = array();
+
+    if (!is_dir($dir)) {
+      mkdir($dir, 0777, true);
+    }
 
     $cdir = scandir($dir);
     foreach ($cdir as $key => $value) {
