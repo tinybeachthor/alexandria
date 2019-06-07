@@ -2,7 +2,6 @@
 
 namespace Controller;
 
-use Core\Template;
 use Core\Request;
 
 class Book extends AbstractController
@@ -17,7 +16,7 @@ class Book extends AbstractController
 
     $this->target_dir = getenv('STORAGE_ROOT') . self::BOOKS_DIR;
     if(!is_dir($this->target_dir)) {
-      mkdir($target_dir, 0777, true);
+      mkdir($this->target_dir, 0777, true);
     }
   }
 
@@ -27,7 +26,7 @@ class Book extends AbstractController
     $upload_name = basename($upload_file['name']);
     $target_file = $this->target_dir . DIRECTORY_SEPARATOR . $upload_name;
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    /* $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); */
 
     if(isset($request->getPost()['submit'])) {
       $check = filesize($upload_file['tmp_name']);
