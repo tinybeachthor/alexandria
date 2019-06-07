@@ -12,3 +12,23 @@ div,img,p {
 	padding: 0;
 	margin: 0;
 }
+
+ul.books {
+}
+ul.books > li {
+  list-style: none;
+
+  padding: 0.5rem 5px;
+
+  max-width: 800px;
+  display: grid;
+  grid-template-areas:
+    'title controls'
+  ;
+  grid-template-columns: auto max-content;
+}
+ul.books > li:nth-child(2n+1) {
+  background: #c3eeff;
+}
+ul.books > li > .controls {
+}

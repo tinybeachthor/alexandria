@@ -13,9 +13,15 @@
   <hr>
 
   Books:
-  <ul>
+  <ul class="books">
   {% for book in books %}
-    <li> {{ book }} </li>
+    <li>
+      <div class="title">{{ book }}</div>
+      <div class="controls">
+        <button>View</button>
+        <button>Delete</button>
+      </div>
+    </li>
   {% endfor %}
   </ul>
 
