@@ -9,7 +9,7 @@ use Monolog\Handler\SyslogHandler;
 use Core\Request;
 
 $log = new Logger('default');
-$log->pushHandler(new SyslogHandler());
+$log->pushHandler(new SyslogHandler(APP_NAME));
 
 $request = new Request($_SERVER, $_POST, $_GET, $_FILES);
 
