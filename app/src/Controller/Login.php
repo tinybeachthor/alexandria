@@ -5,7 +5,6 @@ namespace Controller;
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 
-use Core\Template;
 use Core\Request;
 
 class Login extends AbstractController
@@ -20,7 +19,7 @@ class Login extends AbstractController
     ($this->log)->pushHandler(new SyslogHandler(APP_NAME));
   }
 
-  public function indexMethod(Request $request)
+  public function indexMethod()
   {
     return parent::getView(
       __METHOD__,

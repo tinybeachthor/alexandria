@@ -19,15 +19,19 @@ $request = new Request(
 $log = new Logger('index');
 $log->pushHandler(new SyslogHandler(APP_NAME));
 
+const PUBLIC_CONTROLLERS = [
+  APP_CONTROLLER_NAMESPACE.'Login',
+];
+
 try {
   $controller = $request->getController();
   $method = $request->getMethod($controller);
   $session = $request->getSession();
 
-  // check if logged in or logging in
+  // check if logged in or accessing a public controller
   if (
     $session->isLoggedIn() ||
-    ($controller == APP_CONTROLLER_NAMESPACE.'Login')
+    in_array($controller, PUBLIC_CONTROLLERS)
   ) {
     $controller = new $controller;
     echo $controller->$method($request);
