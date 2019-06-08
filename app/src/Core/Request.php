@@ -10,24 +10,29 @@ class Request {
   private $post;
   private $get;
   private $files;
+  private $session;
 
   public function __construct
   (
     array $server = [],
     array $post = [],
     array $get = [],
-    array $files = []
+    array $files = [],
+    array $session = []
   )
   {
     $this->server = $server;
     $this->post = $post;
     $this->get = $get;
     $this->files = $files;
+    $this->session = new Session($session);
   }
 
   public function getServer($index = null)
   {
-    return !is_null($index) && isset($this->server[$index]) ? $this->server[$index] : $this->server;
+    return !is_null($index) && isset($this->server[$index])
+      ? $this->server[$index]
+      : $this->server;
   }
 
   public function getPost()
@@ -43,6 +48,11 @@ class Request {
   public function getFiles()
   {
     return $this->files;
+  }
+
+  public function getSession()
+  {
+    return $this->session;
   }
 
   public function getController()
@@ -62,7 +72,13 @@ class Request {
 
     // Otherwise
     http_response_code(404);
-    throw new Exception(sprintf('Controller cannot be found: [%s]', APP_CONTROLLER_NAMESPACE.$urlParts[0]), 404);
+    throw new Exception(
+      sprintf(
+        'Controller cannot be found: [%s]',
+        APP_CONTROLLER_NAMESPACE.$urlParts[0]
+      ),
+      404
+    );
   }
 
   public function getMethod($controller)

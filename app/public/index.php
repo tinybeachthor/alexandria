@@ -7,24 +7,28 @@ use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 
 use Core\Request;
-use Model\User;
 
 session_start([
   'cookie_lifetime' => 60 * 60 * 24 * 7, // 7days
 ]);
 
-$log = new Logger('default');
-$log->pushHandler(new SyslogHandler(APP_NAME));
+$request = new Request(
+  $_SERVER, $_POST, $_GET, $_FILES, $_SESSION
+);
 
-$user = new User($_SESSION);
-$request = new Request($_SERVER, $_POST, $_GET, $_FILES);
+$log = new Logger('index');
+$log->pushHandler(new SyslogHandler(APP_NAME));
 
 try {
   $controller = $request->getController();
   $method = $request->getMethod($controller);
+  $session = $request->getSession();
 
-  // check if logged in
-  if ($user->isLoggedIn() || ($controller == APP_CONTROLLER_NAMESPACE.'Login')) {
+  // check if logged in or logging in
+  if (
+    $session->isLoggedIn() ||
+    ($controller == APP_CONTROLLER_NAMESPACE.'Login')
+  ) {
     $controller = new $controller;
     echo $controller->$method($request);
   }
