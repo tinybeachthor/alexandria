@@ -54,4 +54,13 @@ class Login extends AbstractController
     }
   }
 
+  public function logoutMethod(Request $request)
+  {
+    $session = $request->getSession();
+    $session->logout();
+
+    header('Location: /login', true, 302);
+    exit();
+  }
+
 }

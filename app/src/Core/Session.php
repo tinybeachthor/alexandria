@@ -42,14 +42,22 @@ class Session
 
     return false;
   }
+  public function logout()
+  {
+    $this->erase(self::USERNAME_KEY);
+  }
 
-  private function set
-  (
+  private function set(
     string $key,
     string $value
-  )
-  {
+  ) {
     $_SESSION[$key] = $value;
     $this->session[$key] = $value;
+  }
+  private function erase(
+    string $key
+  ) {
+    unset($_SESSION[$key]);
+    unset($this->session[$key]);
   }
 }
