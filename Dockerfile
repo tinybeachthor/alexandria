@@ -26,3 +26,5 @@ RUN ln -sf /opt/docker/etc/cron/crontab /etc/cron.d/docker-boilerplate \
 
 # Configure volume/workdir
 WORKDIR /app/
+
+COPY app/ /app/
