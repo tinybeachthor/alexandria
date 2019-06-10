@@ -21,7 +21,7 @@ up: build
 	docker container run \
 		--rm -d \
 		--name ${name}-dev \
-		--env-file .config --env-file .env \
+		--env-file .env \
 		-p 8000:80 -p 8443:443 -p 10022:22 \
 		-v ${PWD}/app:/app -v ${PWD}/data:/data \
 		-t ${name}:latest
