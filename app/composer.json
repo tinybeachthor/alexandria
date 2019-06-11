@@ -1,12 +1,12 @@
 {
-  "name": "Alexandria",
+  "name": "whomenope/alexandria",
   "description": "Your personal ebook library manager.",
   "license": "GPL3",
   "type": "project",
   "authors": [
     {
       "name": "Martin Toman",
-      "email": "toman.martin@live.com"
+      "email": "whomenope@outlook.com"
     }
   ],
   "require": {

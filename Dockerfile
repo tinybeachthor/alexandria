@@ -27,4 +27,9 @@ RUN ln -sf /opt/docker/etc/cron/crontab /etc/cron.d/docker-boilerplate \
 # Configure volume/workdir
 WORKDIR /app/
 
+# Install dependencies
+COPY app/composer.json app/composer.lock /app/
+RUN composer install
+
+# Copy app files
 COPY app/ /app/
