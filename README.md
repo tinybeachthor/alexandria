@@ -10,3 +10,8 @@ Simple personal ebook manager.
 3. Track ebook progress + sync across devices.
 4. Integrated reader for previewing.
 
+## Installation
+```sh
+curl https://raw.githubusercontent.com/WhoMeNope/alexandria/master/install.sh | bash
+```
+
