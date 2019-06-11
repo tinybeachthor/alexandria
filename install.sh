@@ -9,6 +9,7 @@ ADMIN_USERNAME='root'
 ADMIN_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)
 
 mkdir -p $DATA_DIR
+chmod 777 $DATA_DIR/data
 mkdir $DATA_DIR/data
 
 touch $DATA_DIR/config
@@ -27,6 +28,7 @@ docker container run \
 
 echo; echo "Successfully deployed!"
 echo "You can access Alexandria on:"
-echo; echo; echo "localhost:$PORT"; echo;
+echo; echo "http://localhost:$PORT"; echo;
 echo "Username: $ADMIN_USERNAME"
 echo "Password: $ADMIN_PASSWORD"; echo
+echo "You can change this by editing $DATA_DIR/config."
