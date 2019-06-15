@@ -9,25 +9,12 @@
 
     <link rel="stylesheet" type="text/css" href="root.css">
 
-    {% block header %}{% endblock %}
+    {% block head %}{% endblock %}
 
   </head>
   <body>
 
-    <header>
-      <div>
-        <ul>
-          <li><a href="/">HOME</a></li>
-          <li><a href="/login/logout">LOGOUT</a></li>
-        </ul>
-      </div>
-      <hr />
-      <div>
-        <h3>{{ header }}</h3>
-      </div>
-    <header>
-
-    <hr />
+    {% block header %}{% endblock %}
 
     <main>
       {% block main %}{% endblock %}

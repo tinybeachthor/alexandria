@@ -30,7 +30,7 @@ class Template
     $directory = $this->getDirectory($parts[0]);
     $file = $this->getFile($parts[1]);
 
-    $path = $directory.'/'.$file.'.html.twig';
+    $path = $directory.'/'.$file.'.html';
     try {
       return ($this->twig)->render($path, $variables);
     }
