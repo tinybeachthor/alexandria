@@ -19,8 +19,17 @@ class Login extends AbstractController
     ($this->log)->pushHandler(new SyslogHandler(APP_NAME));
   }
 
-  public function indexMethod()
+  public function indexMethod(Request $request)
   {
+    $session = $request->getSession();
+
+    // check if logged in already
+    if ($session->isLoggedIn()) {
+      // redirect to home page
+      header('Location: /');
+      exit();
+    }
+
     return parent::getView(
       __METHOD__,
       [
@@ -35,6 +44,7 @@ class Login extends AbstractController
     $post = $request->getPost();
     $session = $request->getSession();
 
+    // try to login
     $uname = $post['uname'];
     $upswd = $post['psw'];
 
