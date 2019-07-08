@@ -19,10 +19,10 @@ function fileUpload(dropArea, progressBar) {
     unhighlight()
   }, false)
   dropArea.addEventListener('drop', unhighlight, false)
-  function highlight(e) {
+  function highlight() {
     dropArea.classList.add('highlight')
   }
-  function unhighlight(e) {
+  function unhighlight() {
     dropArea.classList.remove('highlight')
   }
 
