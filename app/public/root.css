@@ -21,6 +21,9 @@ main {
 
 ul.books {
 }
+ul.books.highlight {
+  border: dashed 5px blue;
+}
 ul.books > li {
   list-style: none;
 

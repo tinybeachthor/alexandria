@@ -1,7 +1,7 @@
 name = alexandria
 
 ARGS = $(filter-out $@,$(MAKECMDGOALS))
-# MAKEFLAGS += --silent
+MAKEFLAGS += --silent
 
 PWD := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
