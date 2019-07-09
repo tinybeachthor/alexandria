@@ -15,9 +15,8 @@
     Select book to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload File" name="submit">
+    <progress id="progress-bar" max=100 value=0></progress>
   </form>
-
-  <progress id="progress-bar" max=100 value=0></progress>
 
   <section class="content">
     <ul class="books" id="books-drop">
@@ -32,7 +31,7 @@
       {% endfor %}
     </ul>
 
-    <ul class="device-books">
+    <ul class="books device">
       <li>
         <div class="title">book</div>
         <div class="controls">
@@ -49,7 +48,7 @@
       </li>
       {% endfor %}
       <li>
-        <div class="add-device">Add device</div>
+        <div class="add-device">+</div>
       </li>
     </ul>
   </section>
