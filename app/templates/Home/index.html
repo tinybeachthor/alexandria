@@ -19,18 +19,40 @@
 
   <progress id="progress-bar" max=100 value=0></progress>
 
-  Books:
-  <ul class="books" id="books-drop">
-    {% for book in books %}
-    <li>
-      <div class="title">{{ book }}</div>
-      <div class="controls">
-        <button>View</button>
-        <button>Delete</button>
-      </div>
-    </li>
-    {% endfor %}
-  </ul>
+  <section class="content">
+    <ul class="books" id="books-drop">
+      {% for book in books %}
+      <li>
+        <div class="title">{{ book }}</div>
+        <div class="controls">
+          <button>View</button>
+          <button>Delete</button>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <ul class="device-books">
+      <li>
+        <div class="title">book</div>
+        <div class="controls">
+          <button>View</button>
+          <button>Delete</button>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="devices">
+      {% for device in devices %}
+      <li>
+        <div class="device">{{ device }}</div>
+      </li>
+      {% endfor %}
+      <li>
+        <div class="add-device">Add device</div>
+      </li>
+    </ul>
+  </section>
 
   <script src="file-drop.js"></script>
   <script>

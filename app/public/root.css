@@ -12,14 +12,22 @@ div,img,p {
 	padding: 0;
 	margin: 0;
 }
-
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+main > .content {
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    "books device devices";
+  grid-template-columns: auto 40% 80px;
+}
+
 ul.books {
+  grid-area: books;
 }
 ul.books.highlight {
   border: dashed 5px blue;
@@ -40,4 +48,8 @@ ul.books > li:nth-child(2n+1) {
   background: #c3eeff;
 }
 ul.books > li > .controls {
+}
+
+ul.devices {
+  grid-area: devices;
 }
