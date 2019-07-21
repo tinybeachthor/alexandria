@@ -65,10 +65,14 @@ ul.devices {
 }
 ul.devices > li {
   list-style: none;
+  line-height: 50px;
+}
+
+ul.devices #add-device {
   font-size: 40px;
 }
 
-ul.devices #add-device:hover {
+ul.devices > li:hover {
   background: #aaa;
   cursor: pointer;
 }

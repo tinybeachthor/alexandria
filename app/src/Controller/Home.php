@@ -2,10 +2,8 @@
 
 namespace Controller;
 
-use Core\Template;
-use Core\Request;
-
 use Controller\Book;
+use Controller\Device;
 
 class Home extends AbstractController
 {
@@ -14,7 +12,7 @@ class Home extends AbstractController
     parent::__construct();
   }
 
-  public function indexMethod(Request $request)
+  public function indexMethod()
   {
     return parent::getView(
       __METHOD__,
