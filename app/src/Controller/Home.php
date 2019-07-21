@@ -21,7 +21,8 @@ class Home extends AbstractController
       [
         'title' => APP_NAME.' - Home',
         'header' => 'Welcome to '.APP_NAME,
-        'books' => $this->dirToArray(getenv('STORAGE_ROOT') . Book::BOOKS_DIR)
+        'books' => $this->dirToArray(getenv('STORAGE_ROOT') . Book::BOOKS_DIR),
+        'devices' => $this->dirToArray(getenv('STORAGE_ROOT') . Device::DEVICES_DIR),
       ]
     );
   }
@@ -37,12 +38,7 @@ class Home extends AbstractController
     $cdir = scandir($dir);
     foreach ($cdir as $key => $value) {
       if (!in_array($value,array(".",".."))) {
-        if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
-          $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value);
-        }
-        else {
-          $result[] = $value;
-        }
+        $result[] = $value;
       }
     }
     return $result;

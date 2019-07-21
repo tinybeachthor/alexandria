@@ -23,7 +23,7 @@ main > .content {
   display: grid;
   grid-template-areas:
     "books device devices";
-  grid-template-columns: auto auto 80px;
+  grid-template-columns: repeat(2, 1fr) 80px;
 }
 
 ul.books {
@@ -61,8 +61,14 @@ ul.device {
 
 ul.devices {
   grid-area: devices;
+  padding: 0;
 }
 ul.devices > li {
   list-style: none;
   font-size: 40px;
+}
+
+ul.devices #add-device:hover {
+  background: #aaa;
+  cursor: pointer;
 }

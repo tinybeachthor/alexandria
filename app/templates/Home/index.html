@@ -48,7 +48,7 @@
       </li>
       {% endfor %}
       <li>
-        <div class="add-device">+</div>
+        <div id="add-device">+</div>
       </li>
     </ul>
   </section>
@@ -58,6 +58,12 @@
     let dropArea = document.getElementById('books-drop')
     let progressBar = document.getElementById('progress-bar')
     fileUpload(dropArea, progressBar)
+  </script>
+  <script>
+    let addDevice = document.getElementById('add-device')
+    addDevice.addEventListener("click", (e) => {
+      window.location.href= '/device'
+    })
   </script>
 
 {% endblock %}
