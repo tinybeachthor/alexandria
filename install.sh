@@ -6,7 +6,7 @@ DATA_DIR="/var/$NAME"
 
 PORT=7999
 ADMIN_USERNAME='root'
-ADMIN_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)
+ADMIN_PASSWORD=$(cat /dev/urandom | LC_CTYPE=C tr -dc 'a-zA-Z0-9' | head -c 64)
 
 mkdir -p $DATA_DIR
 mkdir $DATA_DIR/data
