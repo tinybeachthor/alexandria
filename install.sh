@@ -9,8 +9,8 @@ ADMIN_USERNAME='root'
 ADMIN_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 64)
 
 mkdir -p $DATA_DIR
-chmod 777 $DATA_DIR/data
 mkdir $DATA_DIR/data
+chmod 777 $DATA_DIR/data
 
 touch $DATA_DIR/config
 chmod 400 $DATA_DIR/config
