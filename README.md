@@ -1,7 +1,5 @@
 # Alexandria
 
-**\*\*\*WORK IN PROGRESS\*\*\***
-
 Simple personal ebook manager.
 
 ## Features
@@ -14,4 +12,3 @@ Simple personal ebook manager.
 ```sh
 curl https://raw.githubusercontent.com/WhoMeNope/alexandria/master/install.sh | bash
 ```
-
